@@ -11,10 +11,10 @@
 		#left{
 			float: left;
 			margin-left: 40px;
-			width: 200px;
-			height: 300px;
+			width: 140px;
+			height: 280px;
 			padding: 0;
-			overflow: hidden;
+			overflow-x: hidden;
 			perspective: 800;
 			transform-style: preserve-3d;
 			-webkit-perspective: 800;
@@ -22,8 +22,8 @@
 		}
 		#right{
 			float: left;
-			width: 200px;
-			height: 300px;
+			width: 140px;
+			height: 280px;
 			padding: 0;
 			overflow: hidden;
 			perspective: 800;
@@ -44,9 +44,10 @@
 		}
 		#pagel1{
 			background-image: url('default.jpg');
-			background-size: cover;
+			background-size: auto 280px;
 			background-repeat: no-repeat;
 			background-position-y:center;
+
 		}
 		#pagel2,#pagel3,#pagel4{
 			transform: rotateY(180deg);
@@ -56,7 +57,7 @@
 			position: absolute;
 			width: 100%;
 			height: 100%;
-			background-color: grey;
+			background-color: green;
 			transition: transform 1s linear;
 			-webkit-transition: transform 1s linear;
 			transform-origin: left center;
@@ -65,9 +66,9 @@
 		#pager1{
 			z-index: -10;
 			background-image: url('default.jpg');
-			background-size: cover;
+			background-size: auto 280px;
 			background-repeat: no-repeat;
-			background-position: -200px;
+			background-position: -140px;
 		}
 		#pager2{
 			z-index: -20;
