@@ -5,6 +5,8 @@ var changeSong = function(path) {
 
 changeSong('music/Girl.mp3')
 
+// 播放和暂停功能
+
 var bindEventPlayer = function() {
 	var buttonToggle = e('#guaPlayer-toggle')
 	bindEvent(buttonToggle, 'click', function(event){
@@ -24,6 +26,8 @@ var bindEventPlayer = function() {
 	
 	
 }
+
+// 音量条拖动以及音量设置绑定
 
 var getVolume = function() {
 	var v = e('#guaPlayer-volume')
@@ -92,6 +96,62 @@ var bindEventChangeVolume = function() {
 		}
 	})
 }
+
+
+// 总时间 以及 当前时间显示
+var rjust = function(str, size, delimeter='0') {
+	var result = str
+	while(result.length < size) {
+		result = delimeter + result
+	}
+	return result
+}
+
+var formatTime = function(sum) {
+	var m = String(Math.floor(sum % 3600 / 60))
+	var s = String(Math.floor(sum % 60))
+	var time = `${rjust(m, 2)}:${rjust(s, 2)}`
+	return time
+}
+
+var showDuration = function() {
+	var a = e('#id-audio-player')
+	var t = e('#id-audio-sum')
+	var sum = a.duration
+	if(!isNaN(sum)) {
+		var time = formatTime(sum)
+		t.innerHTML = time
+	} else {
+		setTimeout(showDuration, 100)
+	}
+}
+
+var showCurrentTime = function() {
+	var a = e('#id-audio-player')
+	var t = e('#id-audio-now')
+	var sum = a.currentTime
+	if(!isNaN(sum)) {
+		var time = formatTime(sum)
+		t.innerHTML = time
+	} else {
+		setTimeout(showCurrentTime, 100)
+	}
+}
+
+setInterval(showCurrentTime, 100)
+
+var bindEventCanPlay = function() {
+	var a = e('#id-audio-player')
+	bindEvent(a, 'canplay', function(){
+		showDuration()
+		showCurrentTime()
+		// a.play()
+	})
+}
+bindEventCanPlay()
+
+
+
 
 bindEventPlayer()
 bindEventChangeVolume()
