@@ -119,6 +119,7 @@
 #guaPlayer-backward:hover, 
 #guaPlayer-volume:hover {
 	opacity: 1;
+	    box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .gua-vertical-slider {
