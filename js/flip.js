@@ -50,11 +50,9 @@ var bindEventFlip = function() {
 	bindEvent(flipSide, 'mouseover', function(event){
 		sideOver = true
 	})
-
 	bindEvent(flipSide, 'mouseleave', function(event){
 		sideOver = false
 	})
-
 	bindEvent(flipRight, 'mouseenter', function(event) {
 		if (sideOver == false) {
 			hoverIn()
@@ -68,8 +66,6 @@ var bindEventFlip = function() {
 			next()
 		}
 	})
-
-	
 }
 
 bindEventFlip()

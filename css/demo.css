@@ -2,7 +2,7 @@
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%, -50%);
+	margin: -140px -150px;
 	width: 280px;
 	height: 300px;
 	background: lightblue;

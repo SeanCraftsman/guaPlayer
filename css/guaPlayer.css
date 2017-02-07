@@ -49,7 +49,6 @@
 	background-size: auto 280px;
 	background-repeat: no-repeat;
 	background-position: -140px;
-	transform: rotateY(-50deg);
 }
 #gua-flip-pageR2{
 	z-index: -20;
@@ -129,6 +128,8 @@
 	margin: 5px auto;
 	background-color: #242427;
 	position: relative;
+	cursor: default;
+	user-select: none;
 }
 
 .gua-vertical-bar {
@@ -138,4 +139,6 @@
 	position: absolute;
 	bottom: 0;
 	background-color: #E83C3C;
+	cursor: default;
+	user-select: none;
 }
