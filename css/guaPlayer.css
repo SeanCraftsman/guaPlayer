@@ -3,22 +3,18 @@
 	width: 140px;
 	height: 280px;
 	padding: 0;
-	overflow-x: hidden;
-	perspective: 800;
 	transform-style: preserve-3d;
-	-webkit-perspective: 800;
-	-webkit-transform-style: -webkit-preserve-3d;
+	perspective: 800px;
+	backface-visibility:hidden;
 }
 .guaPlayer .flip-right{
 	float: left;
 	width: 140px;
 	height: 280px;
 	padding: 0;
-	overflow: hidden;
-	perspective: 800;
 	transform-style: preserve-3d;
-	-webkit-perspective: 800;
-	-webkit-transform-style: -webkit-preserve-3d;
+	perspective: 800px;
+	backface-visibility:hidden;
 }
 
 #gua-flip-pageL1,#gua-flip-pageL2,#gua-flip-pageL3,#gua-flip-pageL4{
@@ -27,9 +23,7 @@
 	height: 100%;
 	background-color: grey;
 	transform-origin: right center;
-	transition: transform 1s linear;
-	-webkit-transition: transform 1s linear;
-	-webkit-transform-origin: right center;
+	transition: transform 0.5s linear;
 }
 #gua-flip-pageL1{
 	background-image: url('../img/default.jpg');
@@ -39,18 +33,15 @@
 
 }
 #gua-flip-pageL2,#gua-flip-pageL3,#gua-flip-pageL4{
-	transform: rotateY(180deg);
-	-webkit-transform: rotateY(180deg);
+	transform: rotateY(85deg);
 }
 #gua-flip-pageR1,#gua-flip-pageR2,#gua-flip-pageR3,#gua-flip-pageR4{
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	background-color: green;
-	transition: transform 1s linear;
-	-webkit-transition: transform 1s linear;
+	transition: transform 0.5s linear;
 	transform-origin: left center;
-	-webkit-transform-origin: left center;
 }
 #gua-flip-pageR1{
 	z-index: -10;
@@ -58,6 +49,7 @@
 	background-size: auto 280px;
 	background-repeat: no-repeat;
 	background-position: -140px;
+	transform: rotateY(-50deg);
 }
 #gua-flip-pageR2{
 	z-index: -20;
