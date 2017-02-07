@@ -166,16 +166,17 @@ var bindEventChangeTime = function() {
 	var track = e('.guaSlider')
 	log(track)
 	var down = false
-	var changePercent = function(){
+	var changePercent = function(event){
 		var barWidth = track.offsetWidth
-		var percent = 1 - (getElementViewTop(track) - event.clientX) / barWidth;
+		var percent = (event.clientX - getElementViewLeft(track)) / barWidth;
+		log(percent)
 		percent = percent > 0 ? percent : 0;
 		percent = percent < 1 ? percent : 1;
 		changeTime(percent)
 	}
 	bindEvent(track, 'mousedown', function(event){
 		down = true
-		changePercent()
+		changePercent(event)
 	})
 	bindEvent(track, 'mouseup', function(){
 		down = false
@@ -183,9 +184,9 @@ var bindEventChangeTime = function() {
 	bindEvent(track, 'mouseleave', function(){
 		down = false
 	})
-	bindEvent(track, 'mousemove', function(){
+	bindEvent(track, 'mousemove', function(event){
 		if (down) {
-			changePercent()
+			changePercent(event)
 		}
 	})
 }

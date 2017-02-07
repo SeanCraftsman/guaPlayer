@@ -2,7 +2,8 @@
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin: -140px -150px;
+	margin-left: -140px;
+	margin-top: -150px;
 	width: 280px;
 	height: 300px;
 	color: white;
