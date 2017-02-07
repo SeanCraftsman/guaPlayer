@@ -5,15 +5,13 @@ var prev = function() {
 	var lPage = document.querySelector("#gua-flip-pageL" + curPage);
 	lPage.style.transform = "rotateY(85deg)";
 	lPage.style.transitionDelay = '0s';
-	// lPage.style.webkitTransform = "rotateY(85deg)";
 	//右边翻页
 	var rPage = document.querySelector("#gua-flip-pageR" + (curPage-1));
 	rPage.style.transform = "rotateY(0deg)";
 	rPage.style.transitionDelay = '0.5s';
-	// rPage.style.webkitTransform = "rotateY(0deg)";
 	curPage--;
 }
-var  next = function() {
+var next = function() {
 	if(3===curPage) return;
 	//左边翻页
 	var lPage = document.querySelector("#gua-flip-pageL" + (curPage+1));
@@ -25,5 +23,25 @@ var  next = function() {
 	rPage.style.transitionDelay = '0s';
 	curPage++;
 }
-document.querySelector('#prev').addEventListener('click', prev)
-document.querySelector('#next').addEventListener('click', next)
+
+var hoverIn = function() {
+	if(3===curPage) return;
+	//右边翻页
+	var rPage = document.querySelector("#gua-flip-pageR" + curPage);
+	rPage.style.transform = "rotateY(-50deg)";
+	rPage.style.transitionDelay = '0s';
+}
+
+var hoverOut = function() {
+	if(3===curPage) return;
+	//右边翻页
+	var rPage = document.querySelector("#gua-flip-pageR" + curPage);
+	rPage.style.transform = "rotateY(0deg)";
+	rPage.style.transitionDelay = '0s';
+}
+
+document.querySelector('.guaPlayer .flip-right').addEventListener('mouseenter', hoverIn)
+document.querySelector('.guaPlayer .flip-right').addEventListener('mouseleave', hoverOut)
+
+document.querySelector('.guaPlayer .flip-left').addEventListener('click', prev)
+document.querySelector('.guaPlayer .flip-right').addEventListener('click', next)
