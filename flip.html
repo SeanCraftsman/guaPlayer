@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition绘制翻页效果</title>
+	<style>
+		.btn{
+			clear:both;	
+			margin-left: 40px;
+		}
+		#left{
+			float: left;
+			background-color: black;
+			margin-left: 40px;
+			width: 200px;
+			height: 200px;
+			padding: 0;
+			overflow: hidden;
+			perspective: 800;
+			transform-style: preserve-3d;
+			-webkit-perspective: 800;
+			-webkit-transform-style: -webkit-preserve-3d;
+		}
+		#right{
+			float: left;
+			background-color: black;
+			width: 200px;
+			height: 200px;
+			padding: 0;
+			overflow: hidden;
+			perspective: 800;
+			transform-style: preserve-3d;
+			-webkit-perspective: 800;
+			-webkit-transform-style: -webkit-preserve-3d;
+		}
+		#pagel1,#pagel2,#pagel3,#pagel4{
+			position: absolute;
+			width: 158px;
+			height: 158px;
+			background-color: grey;
+			padding: 20px;
+			transform-origin: right center;
+			transition: transform 1s linear;
+			-webkit-transition: transform 1s linear;
+			-webkit-transform-origin: right center;
+			border: 1px solid red;
+		}
+		#pagel2,#pagel3,#pagel4{
+			transform: rotateY(180deg);
+			-webkit-transform: rotateY(180deg);
+		}
+		#pager1,#pager2,#pager3,#pager4{
+			position: absolute;
+			width: 158px;
+			height: 158px;
+			background-color: grey;
+			padding: 20px;
+			transition: transform 1s linear;
+			-webkit-transition: transform 1s linear;
+			transform-origin: left center;
+			-webkit-transform-origin: left center;
+			border: 1px solid red;
+		}
+		#pager1{
+			z-index: -10;
+		}
+		#pager2{
+			z-index: -20;
+		}
+		#pager3{
+			z-index: -30;
+		}
+		#pager4{
+			z-index: -40;
+		}
+	</style>
+</head>
+<body>
+	<div id="left">
+		<div id="pagel1">第1页</div>
+		<div id="pagel2">第3页</div>
+		<div id="pagel3">第5页</div>
+		<div id="pagel4">第7页</div>
+	</div>
+	<div id="right">
+		<div id="pager1">第2页</div>
+		<div id="pager2">第4页</div>
+		<div id="pager3">第6页</div>
+		<div id="pager4">第8页</div>
+	</div>
+	<div class="btn">
+		<button id="prev">上一页</button>  
+		<button id="next">下一页</button>
+	</div>
+	<script>
+		var curPage = 1;
+		var prev = function() {
+			if(1===curPage) return;
+			//左边翻页
+			var lPage = document.getElementById("pagel" + curPage);
+			lPage.style.transform = "rotateY(180deg)";
+			lPage.style.webkitTransform = "rotateY(180deg)";
+			//右边翻页
+			var rPage = document.getElementById("pager" + (curPage-1));
+			rPage.style.transform = "rotateY(0deg)";
+			rPage.style.webkitTransform = "rotateY(0deg)";
+			curPage--;
+		}
+		var  next = function() {
+			if(4===curPage) return;
+			//左边翻页
+			var lPage = document.getElementById("pagel" + (curPage+1));
+			lPage.style.transform = "rotateY(0deg)";
+			lPage.style.webkitTransform = "rotateY(0deg)";
+			//右边翻页
+			var rPage = document.getElementById("pager" + curPage);
+			rPage.style.transform = "rotateY(-180deg)";
+			rPage.style.webkitTransform = "rotateY(-180deg)";
+			curPage++;
+		}
+		document.querySelector('#prev').addEventListener('click', prev)
+		document.querySelector('#next').addEventListener('click', next)
+	</script>
+</body>
+</html>
