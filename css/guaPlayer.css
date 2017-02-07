@@ -1,3 +1,10 @@
+
+.guaPlayer .content {
+	width: 280px;
+	height: 280px;
+	position: relative;
+	z-index: 1;
+}
 .guaPlayer .flip-left{
 	float: left;
 	width: 140px;
@@ -44,20 +51,20 @@
 	transform-origin: left center;
 }
 #gua-flip-pageR1{
-	z-index: -10;
+	z-index: 100;
 	background-image: url('../img/default.jpg');
 	background-size: auto 280px;
 	background-repeat: no-repeat;
 	background-position: -140px;
 }
 #gua-flip-pageR2{
-	z-index: -20;
+	z-index: 90;
 }
 #gua-flip-pageR3{
-	z-index: -30;
+	z-index: 80;
 }
 #gua-flip-pageR4{
-	z-index: -40;
+	z-index: 70;
 }
 
 #guaPlayer-aside {
@@ -141,4 +148,30 @@
 	background-color: #E83C3C;
 	cursor: default;
 	user-select: none;
+}
+
+#id-audio-time {
+	text-align: center;
+	line-height: 20px;
+	user-select: none;
+	cursor: default;
+}
+
+.guaSlider {
+	height: 20px;
+	width: 100%;
+	background-color: #636363;
+	position: absolute;
+	bottom: 0px;
+	z-index: 0;
+}
+
+.guaSlider .guaSliderBar{
+	position: absolute;
+	left: 0;
+	top:0;
+	height: 20px;
+	width: 60%;
+	z-index: -1;
+	background-color: #B82525;
 }

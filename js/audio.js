@@ -121,8 +121,6 @@ var showDuration = function() {
 	if(!isNaN(sum)) {
 		var time = formatTime(sum)
 		t.innerHTML = time
-	} else {
-		setTimeout(showDuration, 100)
 	}
 }
 
@@ -133,25 +131,68 @@ var showCurrentTime = function() {
 	if(!isNaN(sum)) {
 		var time = formatTime(sum)
 		t.innerHTML = time
-	} else {
-		setTimeout(showCurrentTime, 100)
+		var percent = sum / a.duration
+		changeTimeBar(percent)
 	}
 }
 
-setInterval(showCurrentTime, 100)
+// 时间进度条显示
+var changeTimeBar = function(percent) {
+	var bar = e('.guaSlider .guaSliderBar')
+	bar.style.width = percent*100 + '%'
+}
 
 var bindEventCanPlay = function() {
 	var a = e('#id-audio-player')
 	bindEvent(a, 'canplay', function(){
 		showDuration()
 		showCurrentTime()
-		// a.play()
+		setInterval(showCurrentTime, 100)
 	})
 }
+
+
+// 时间进度条事件
+// 
+var changeTime = function(percent) {
+	changeTimeBar(percent)
+	var a = e('#id-audio-player')
+	a.currentTime = a.duration * percent
+	showCurrentTime()
+}
+
+var bindEventChangeTime = function() {
+	log('a')
+	var track = e('.guaSlider')
+	log(track)
+	var down = false
+	var changePercent = function(){
+		var barWidth = track.offsetWidth
+		var percent = 1 - (getElementViewTop(track) - event.clientX) / barWidth;
+		percent = percent > 0 ? percent : 0;
+		percent = percent < 1 ? percent : 1;
+		changeTime(percent)
+	}
+	bindEvent(track, 'mousedown', function(event){
+		down = true
+		changePercent()
+	})
+	bindEvent(track, 'mouseup', function(){
+		down = false
+	})
+	bindEvent(track, 'mouseleave', function(){
+		down = false
+	})
+	bindEvent(track, 'mousemove', function(){
+		if (down) {
+			changePercent()
+		}
+	})
+}
+
+
+
+bindEventChangeTime()
 bindEventCanPlay()
-
-
-
-
 bindEventPlayer()
 bindEventChangeVolume()
